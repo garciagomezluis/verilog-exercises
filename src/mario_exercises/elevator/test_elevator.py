@@ -100,8 +100,6 @@ async def two_non_overlapped_flows(dut):
 
     assert dut.current_floor.value == 2, "Error: elevator must be at second floor"
 
-
-
 @cocotb.test()
 async def two_overlapped_flows(dut):
     cocotb.start_soon(Clock(dut.clk, 1, units="ns").start())

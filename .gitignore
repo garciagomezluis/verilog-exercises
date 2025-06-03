@@ -1,2 +1,5 @@
 tmp
 __pycache__
+vivado_project
+*.vcd
+*.vvp

@@ -13,13 +13,12 @@ gtkwave *.vcd
 
 ## Elevator
 
-With Icarus Verilog + cocotb + GTKWave
-
-Dockerized, Local Ubuntu 22.04. In Repo root:
+With Icarus Verilog + GTKWave (+cocotb)
 
 ```bash
-make setup
-make sim
+iverilog -o elevator_tb.vvp *.v
+vvp elevator_tb.vvp
+gtkwave *.vcd
 ```
 
 <img src="./img/elevator1.png" width="100%" />

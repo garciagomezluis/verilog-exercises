@@ -3,7 +3,7 @@ from cocotb.clock import Clock
 from cocotb.triggers import Timer, RisingEdge, ClockCycles
 from cocotb.binary import BinaryValue
 
-# @cocotb.test()
+@cocotb.test()
 async def not_called_must_stay_at_the_first_floor(dut):
     tries = 25
     times_at_first_floor = 0
@@ -21,7 +21,7 @@ async def not_called_must_stay_at_the_first_floor(dut):
 
     assert times_at_first_floor == tries, "Error"
 
-# @cocotb.test()
+@cocotb.test()
 async def one_flow(dut):
     cocotb.start_soon(Clock(dut.clk, 1, units="ns").start())
 
@@ -58,7 +58,7 @@ async def one_flow(dut):
 
     assert dut.current_floor.value == 5, "Error: elevator must be at fifth floor"
 
-# @cocotb.test()
+@cocotb.test()
 async def two_non_overlapped_flows(dut):
     cocotb.start_soon(Clock(dut.clk, 1, units="ns").start())
 
@@ -99,8 +99,6 @@ async def two_non_overlapped_flows(dut):
     await ClockCycles(dut.clk, 30, True)
 
     assert dut.current_floor.value == 2, "Error: elevator must be at second floor"
-
-
 
 @cocotb.test()
 async def two_overlapped_flows(dut):
